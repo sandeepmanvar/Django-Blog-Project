@@ -3,8 +3,13 @@ from django.db.models.deletion import CASCADE
 
 # Create your models here.
 
+
 class Tag(models.Model):
     caption = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.caption
+
 
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
@@ -12,7 +17,7 @@ class Author(models.Model):
     email = models.EmailField(unique=True)
 
     def __str__(self):
-        return self.email
+        return f"{self.first_name} {self.last_name}"
 
 
 class Post(models.Model):
